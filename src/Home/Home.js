@@ -6,7 +6,7 @@ import Input from "../Input/Input";
 import VerticalList from "../VerticalList";
 function Home() {
   const [searchParams] = useSearchParams();
-  let filmQuery = searchParams.get("film") || "";
+  let filmQuery = searchParams.get("q") || "";
   const [value, setValue] = useState(filmQuery);
   let history = useNavigate();
   let [films, setFilms] = useState([]);
@@ -14,7 +14,7 @@ function Home() {
   function handleChange(event) {
     let value = event.target.value;
     setValue(value);
-    const newRoute = `?film=${value}`;
+    const newRoute = `?q=${value}`;
     history(value ? newRoute : "/");
   }
   useEffect(() => {
